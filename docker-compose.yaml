@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  web:
+    build: .
+    ports:
+      - "80:5000"
+    restart: always
+    links:
+      - db
+  
+  db:
+    image: mongo:3.0.2
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+    
